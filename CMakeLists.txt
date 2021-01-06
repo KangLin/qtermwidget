@@ -85,6 +85,10 @@ set(SRCS
     lib/Vt102Emulation.cpp
 )
 
+if(NOT UNIX)
+    list(APPEND SRCS lib/wcwidth.c)
+endif()
+
 # Only the Headers that need to be moc'd go here
 set(HDRS
     lib/Emulation.h

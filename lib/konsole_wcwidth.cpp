@@ -13,6 +13,9 @@
 #include <utf8proc.h>
 #else
 #include <cwchar>
+    #if !defined(wcwidth)
+        int wcwidth(wchar_t ucs);
+    #endif
 #endif
 
 #include "konsole_wcwidth.h"
