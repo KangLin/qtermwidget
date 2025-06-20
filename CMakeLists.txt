@@ -59,9 +59,7 @@ set(QTERMWIDGET_LIBRARY_NAME qtermwidget6)
 
 
 # main library
-
 set(SRCS
-    lib/BlockArray.cpp
     lib/ColorScheme.cpp
     lib/Emulation.cpp
     lib/Filter.cpp
@@ -70,9 +68,6 @@ set(SRCS
     lib/KeyboardTranslator.cpp
     lib/konsole_wcwidth.cpp
     lib/kprocess.cpp
-    lib/kpty.cpp
-    lib/kptydevice.cpp
-    lib/kptyprocess.cpp
     lib/Pty.cpp
     lib/qtermwidget.cpp
     lib/Screen.cpp
@@ -92,8 +87,6 @@ set(HDRS
     lib/Filter.h
     lib/HistorySearch.h
     lib/kprocess.h
-    lib/kptydevice.h
-    lib/kptyprocess.h
     lib/Pty.h
     lib/qtermwidget.h
     lib/ScreenWindow.h
@@ -102,6 +95,28 @@ set(HDRS
     lib/TerminalDisplay.h
     lib/Vt102Emulation.h
 )
+
+if(WIN32)
+    list(APPEND SRCS
+        lib/ptyqt/conptyprocess.cpp
+        lib/ptyqt/iptyprocess.cpp
+    )
+    list(APPEND HDRS
+        lib/ptyqt/conptyprocess.h
+        lib/ptyqt/iptyprocess.h
+    )
+else()
+    list(APPEND SRCS
+        lib/kpty.cpp
+        lib/kptydevice.cpp
+        lib/kptyprocess.cpp
+        lib/BlockArray.cpp
+    )
+    list(APPEND HDRS
+        lib/kptydevice.h
+        lib/kptyprocess.h
+    )
+endif()
 
 set(UI
     lib/SearchBar.ui
