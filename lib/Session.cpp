@@ -279,10 +279,13 @@ void Session::run()
         }
     }
 #else
-    QString exec = QStringLiteral("C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe");
-    // Change shell to cmd.exe if we don't have powershell
-    if(!QFile(exec).exists())
-        exec = QStringLiteral("C:\\WINDOWS\\system32\\cmd.exe");
+    QString exec = QString::fromLocal8Bit(QFile::encodeName(_program));
+    if(!QFile(exec).exists() || exec.isEmpty()) {
+        exec = QStringLiteral("C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe");
+        // Change shell to cmd.exe if we don't have powershell
+        if(!QFile(exec).exists())
+            exec = QStringLiteral("C:\\WINDOWS\\system32\\cmd.exe");
+    }
 #endif
 
     // _arguments sometimes contain ("") so isEmpty()
