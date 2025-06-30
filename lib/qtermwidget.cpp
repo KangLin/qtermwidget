@@ -374,7 +374,6 @@ QTermWidget::~QTermWidget()
     emit destroyed();
 }
 
-
 void QTermWidget::setTerminalFont(const QFont &font)
 {
     m_impl->m_terminalDisplay->setVTFont(font);
@@ -815,6 +814,11 @@ void QTermWidget::saveHistory(QIODevice *device)
     PlainTextDecoder decoder;
     decoder.begin(&stream);
     m_impl->m_session->emulation()->writeToStream(&decoder, 0, m_impl->m_session->emulation()->lineCount());
+}
+
+void QTermWidget::receiveData(const char *buffer, int len)
+{
+    m_impl->m_session->emulation()->receiveData(buffer, len);
 }
 
 void QTermWidget::setDrawLineChars(bool drawLineChars)

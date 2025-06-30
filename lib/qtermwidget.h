@@ -261,6 +261,7 @@ public:
     QTermWidgetInterface *createWidget(int startnow) const override;
 
     void autoHideMouseAfter(int delay) override;
+
 signals:
     void finished();
     void copyAvailable(bool);
@@ -322,6 +323,9 @@ public slots:
     void toggleShowSearchBar();
 
     void saveHistory(QIODevice *device);
+
+    void receiveData(const char* buffer,int len);
+
 protected:
     void resizeEvent(QResizeEvent *) override;
 
