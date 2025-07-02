@@ -384,6 +384,9 @@ Pty::Pty(int masterFd, QObject *aParent)
 
 Pty::~Pty() = default;
 
+void Pty::init()
+{}
+
 void Pty::sendData(const char* buffer, int length)
 {
     if (m_proc) {
