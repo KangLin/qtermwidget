@@ -100,21 +100,24 @@ Session::Session(QObject* parent) :
 
     //create teletype for I/O with shell process
     _shellProcess = new Pty();
-#ifndef Q_OS_WIN
-    ptySlaveFd = _shellProcess->pty()->slaveFd();
-#else
+#if defined(Q_OS_WIN)
     ptySlaveFd = -1;
+#else
+    ptySlaveFd = _shellProcess->pty()->slaveFd();
 #endif
-    
-    // connect the I/O between emulator and pty process
-    connect(_shellProcess, &Konsole::Pty::receivedData, this, &Konsole::Session::onReceiveBlock);
-    connect(_emulation, &Konsole::Emulation::sendData, _shellProcess, &Konsole::Pty::sendData);
 
     //connect teletype to emulation backend
     _shellProcess->setUtf8Mode(true);
-    connect(_shellProcess, &Konsole::Pty::finished, this, &Konsole::Session::done);
-    connect(_emulation, &Konsole::Emulation::useUtf8Request, _shellProcess, &Konsole::Pty::setUtf8Mode);
-    connect( _emulation,&Konsole::Emulation::lockPtyRequest, _shellProcess, &Konsole::Pty::lockPty);
+
+    // connect the I/O between emulator and pty process
+    connect( _shellProcess,SIGNAL(receivedData(const char *,int)),this,
+             SLOT(onReceiveBlock(const char *,int)) );
+    connect( _emulation,SIGNAL(sendData(const char *,int)),_shellProcess,
+             SLOT(sendData(const char *,int)) );
+    connect( _emulation,SIGNAL(lockPtyRequest(bool)),_shellProcess,SLOT(lockPty(bool)) );
+    connect( _emulation,SIGNAL(useUtf8Request(bool)),_shellProcess,SLOT(setUtf8Mode(bool)) );
+
+    connect( _shellProcess,SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(done(int,QProcess::ExitStatus)) );
     connect(_emulation, &Konsole::Emulation::imageSizeChanged, this, &Konsole::Session::onViewSizeChange);
     connect(_emulation, &Konsole::Emulation::imageSizeInitialized, this, &Konsole::Session::run, Qt::QueuedConnection);
     connect(_emulation, &Konsole::Emulation::imageSizeInitialized, this, &Konsole::Session::refresh, Qt::QueuedConnection);
@@ -316,13 +319,15 @@ void Session::run()
     QString backgroundColorHint = _hasDarkBackground ? QLatin1String("COLORFGBG=15;0") : QLatin1String("COLORFGBG=0;15");
 
 #ifndef Q_OS_WIN
-    const auto originalEnvironment = _shellProcess->environment();
-    _shellProcess->setProgram(exec);
-    _shellProcess->setEnvironment(originalEnvironment + _environment);
-    // const auto context = KSandbox::makeHostContext(*_shellProcess);
-    // arguments = postProcessArgs(context.arguments, arguments);
-    _shellProcess->setEnvironment(originalEnvironment);
-    const auto result = _shellProcess->start(exec, arguments, _environment);
+    /* if we do all the checking if this shell exists then we use it ;)
+     * Dont know about the arguments though.. maybe youll need some more checking im not sure
+     * However this works on Arch and FreeBSD now.
+     */
+    int result = _shellProcess->start(exec,
+                                      arguments,
+                                      _environment << backgroundColorHint,
+                                      windowId(),
+                                      _addToUtmp);
 #else // Q_OS_WIN
     const auto size = _emulation->imageSize();
     const int lines = size.height();

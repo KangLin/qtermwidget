@@ -169,9 +169,9 @@ void Pty::addEnvironmentVariables(const QStringList& environment)
 
 int Pty::start(const QString& program,
                const QStringList& programArguments,
-               const QStringList& environment
-            //    ulong winid,
-            //    bool addToUtmp
+               const QStringList& environment,
+               ulong winid,
+               bool addToUtmp
                //const QString& dbusService,
                //const QString& dbusSession
                )
@@ -186,7 +186,7 @@ int Pty::start(const QString& program,
 
   addEnvironmentVariables(environment);
 
-//   setEnv(QLatin1String("WINDOWID"), QString::number(winid));
+  setEnv(QLatin1String("WINDOWID"), QString::number(winid));
   setEnv(QLatin1String("COLORTERM"), QLatin1String("truecolor"));
 
   // unless the LANGUAGE environment variable has been set explicitly
@@ -201,6 +201,8 @@ int Pty::start(const QString& program,
   //
   // BR:149300
   setEnv(QLatin1String("LANGUAGE"),QString(),false /* do not overwrite existing value if any */);
+
+  setUseUtmp(addToUtmp);
 
   struct ::termios ttmode;
   pty()->tcGetAttr(&ttmode);
