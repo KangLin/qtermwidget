@@ -4,22 +4,22 @@
 <context>
     <name>Konsole::Session</name>
     <message>
-        <location filename="../Session.cpp" line="448"/>
+        <location filename="../Session.cpp" line="481"/>
         <source>Bell in session &apos;%1&apos;</source>
         <translation>Звънец в сесия &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="630"/>
+        <location filename="../Session.cpp" line="696"/>
         <source>Session &apos;%1&apos; exited with code %2.</source>
         <translation>Сесия „%1“ приключи с код %2.</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="632"/>
+        <location filename="../Session.cpp" line="698"/>
         <source>Session &apos;%1&apos; crashed.</source>
         <translation>Сесия &apos;%1&apos; се срина.</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="637"/>
+        <location filename="../Session.cpp" line="703"/>
         <source>Session &apos;%1&apos; exited unexpectedly.</source>
         <translation>Сесия &apos;%1&apos; завърши неочаквано.</translation>
     </message>
@@ -55,7 +55,7 @@
 <context>
     <name>Konsole::Vt102Emulation</name>
     <message>
-        <location filename="../Vt102Emulation.cpp" line="1106"/>
+        <location filename="../Vt102Emulation.cpp" line="1105"/>
         <source>No keyboard translator available.  The information needed to convert key presses into characters to send to the terminal is missing.</source>
         <translation>Няма наличен транслатор за клавиатура. Липсва информацията, необходима за преобразуване на клавишите в символи за изпращане до терминала.</translation>
     </message>
@@ -105,12 +105,12 @@
 <context>
     <name>QTermWidget</name>
     <message>
-        <location filename="../qtermwidget.cpp" line="465"/>
+        <location filename="../qtermwidget.cpp" line="477"/>
         <source>Color Scheme Error</source>
         <translation>Грешка в цветовата схема</translation>
     </message>
     <message>
-        <location filename="../qtermwidget.cpp" line="466"/>
+        <location filename="../qtermwidget.cpp" line="478"/>
         <source>Cannot load color scheme: %1</source>
         <translation>Цветна схема %1 не може да се зареди</translation>
     </message>

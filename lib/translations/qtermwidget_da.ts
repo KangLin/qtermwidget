@@ -4,22 +4,22 @@
 <context>
     <name>Konsole::Session</name>
     <message>
-        <location filename="../Session.cpp" line="448"/>
+        <location filename="../Session.cpp" line="481"/>
         <source>Bell in session &apos;%1&apos;</source>
         <translation>Klokke i session &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="630"/>
+        <location filename="../Session.cpp" line="696"/>
         <source>Session &apos;%1&apos; exited with code %2.</source>
         <translation>Session &apos;%1&apos; afsluttet med kode %2.</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="632"/>
+        <location filename="../Session.cpp" line="698"/>
         <source>Session &apos;%1&apos; crashed.</source>
         <translation>Session &apos;%1&apos; er holdt op med at virke.</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="637"/>
+        <location filename="../Session.cpp" line="703"/>
         <source>Session &apos;%1&apos; exited unexpectedly.</source>
         <translation>Session &apos;%1&apos; afsluttede uventet.</translation>
     </message>
@@ -55,7 +55,7 @@
 <context>
     <name>Konsole::Vt102Emulation</name>
     <message>
-        <location filename="../Vt102Emulation.cpp" line="1106"/>
+        <location filename="../Vt102Emulation.cpp" line="1105"/>
         <source>No keyboard translator available.  The information needed to convert key presses into characters to send to the terminal is missing.</source>
         <translation>Ingen tastaturoversætter tilgængelig. Informationen, som er nødvendig for at konvertere tastetryk til tegn, som sendes til terminalen, mangler.</translation>
     </message>
@@ -105,12 +105,12 @@
 <context>
     <name>QTermWidget</name>
     <message>
-        <location filename="../qtermwidget.cpp" line="465"/>
+        <location filename="../qtermwidget.cpp" line="477"/>
         <source>Color Scheme Error</source>
         <translation>Fejl ved farveskema</translation>
     </message>
     <message>
-        <location filename="../qtermwidget.cpp" line="466"/>
+        <location filename="../qtermwidget.cpp" line="478"/>
         <source>Cannot load color scheme: %1</source>
         <translation>Kan ikke indlæse farveskema: %1</translation>
     </message>

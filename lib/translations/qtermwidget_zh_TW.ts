@@ -4,22 +4,22 @@
 <context>
     <name>Konsole::Session</name>
     <message>
-        <location filename="../Session.cpp" line="448"/>
+        <location filename="../Session.cpp" line="481"/>
         <source>Bell in session &apos;%1&apos;</source>
         <translation>在工作階段 &apos;%1&apos; 中的鈴聲</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="630"/>
+        <location filename="../Session.cpp" line="696"/>
         <source>Session &apos;%1&apos; exited with code %2.</source>
         <translation>工作階段 &apos;%1&apos; 已經退出，使用程式碼 &apos;%2&apos;。</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="632"/>
+        <location filename="../Session.cpp" line="698"/>
         <source>Session &apos;%1&apos; crashed.</source>
         <translation>工作階段 &apos;%1&apos; 已經崩潰。</translation>
     </message>
     <message>
-        <location filename="../Session.cpp" line="637"/>
+        <location filename="../Session.cpp" line="703"/>
         <source>Session &apos;%1&apos; exited unexpectedly.</source>
         <translation>工作階段 &apos;%1&apos; 已經意外退出。</translation>
     </message>
@@ -55,7 +55,7 @@
 <context>
     <name>Konsole::Vt102Emulation</name>
     <message>
-        <location filename="../Vt102Emulation.cpp" line="1106"/>
+        <location filename="../Vt102Emulation.cpp" line="1105"/>
         <source>No keyboard translator available.  The information needed to convert key presses into characters to send to the terminal is missing.</source>
         <translation>沒有可用的鍵碼轉換表。.  用來將按鍵轉換成終端機字元的資訊遺失。</translation>
     </message>
@@ -105,12 +105,12 @@
 <context>
     <name>QTermWidget</name>
     <message>
-        <location filename="../qtermwidget.cpp" line="465"/>
+        <location filename="../qtermwidget.cpp" line="477"/>
         <source>Color Scheme Error</source>
         <translation>配色方案錯誤</translation>
     </message>
     <message>
-        <location filename="../qtermwidget.cpp" line="466"/>
+        <location filename="../qtermwidget.cpp" line="478"/>
         <source>Cannot load color scheme: %1</source>
         <translation>無法載入配色方案： %1</translation>
     </message>
