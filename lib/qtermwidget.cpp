@@ -426,12 +426,11 @@ QString QTermWidget::workingDirectory()
     if (!d.exists())
     {
         qDebug() << "Cannot find" << d.dirName();
-        goto fallback;
+        return m_impl->m_session->initialWorkingDirectory();
     }
     return d.canonicalPath();
 #endif
 
-fallback:
     // fallback, initial WD
     return m_impl->m_session->initialWorkingDirectory();
 }
